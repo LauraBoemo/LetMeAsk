@@ -5,6 +5,7 @@ import { NewRoom } from "./pages/NewRoom";
 import { Room } from './pages/Room';
 
 import { AuthContextProvider } from './contexts/AuthContext'
+import { AdminRoom } from './pages/AdminRoom';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
             </Route>
             <Route path="/rooms/:id">
               <Room />
+            </Route>
+            <Route path="/admin/rooms/:id">
+              <AdminRoom />
             </Route>
           </Switch>
         </AuthContextProvider>
