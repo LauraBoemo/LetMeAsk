@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { database } from "../services/firebase";
+import { useAuth } from "./useAuth";
 
 type QuestionType = {
     id: string;
@@ -20,9 +21,13 @@ type FirebaseQuestions = Record<string, {
     content: string;
     isAnswered: boolean;
     isHighlighted: boolean;
+    likes: Record<string, {
+        authorId: string,
+    }>
 }>
 
 export function useRoom(roomId: String) {
+    const { user } = useAuth();
     const [questions, setQuestions] = useState<QuestionType[]>([]);
     const [title, setTitle] = useState('');
     
@@ -40,6 +45,8 @@ export function useRoom(roomId: String) {
                     author: value.author,
                     isAnswered: value.isAnswered,
                     isHighlighted: value.isHighlighted,
+                    likeCount: Object.values(value.likes ?? {}).length,
+                    hasLiked: Object.values(value.likes ?? {}).some(like => like.authorId === user?.id)
                 }
             })
 
