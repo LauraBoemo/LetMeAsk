@@ -1,10 +1,15 @@
 #page-auth {
-    display: flex;
     align-items: stretch;
     height: 100vh;
+    
+    @media (min-width:801px) {
+        display: flex;
+    }
 
     aside {
-        flex: 7;
+        @media (min-width:801px) {
+            flex: 7;
+        }
         
         background-color: #835afd;
         color: #fff;
@@ -13,30 +18,59 @@
         flex-direction: column;
         justify-content: center;
         
-        padding: 120px 80px;
+        padding: 50px 30px;
+
+        @media (min-width:801px) {
+            padding: 120px 80px;
+        }    
 
         img {
-            max-width: 320px;
+            max-width: 170px;
+            align-self: center;
+
+            @media (min-width:801px) {
+                max-width: 320px;
+                align-self: auto;
+            }
         }
 
         strong {
             font: 700 36px 'Poppins', sans-serif;
             line-height: 42px;
             margin-top: 16px;
+            text-align: center;
+            flex-wrap: nowrap;
+            
+            @media (min-width:801px) {
+                text-align: left;
+            }
         }
 
         p {
             font-size: 24px;
             line-height: 32px;
-            margin-top: 16px;
             color: #f8f8f8;
+            text-align: center;
+            flex-wrap: nowrap;
+            margin-top: 5px;
+            
+            @media (min-width:801px) {
+                text-align: left;
+                margin-top: 16px;
+            }
         }
     }
 
     main {
-        flex: 8;
+        @media (min-width:801px) {
+            flex: 8;
+        }
     
-        padding: 0 32px;
+        padding: 30px 30px 70px 30px;
+
+        @media (min-width:801px) {
+            padding: 0 30px;
+        }
 
         display: flex;
         align-items: center;

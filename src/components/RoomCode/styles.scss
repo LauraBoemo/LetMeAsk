@@ -9,6 +9,12 @@
 
     display: flex;
 
+    margin: 20px auto 0 auto;
+
+    @media (min-width:801px) {
+        margin: 0;
+    }
+
     div {
         background-color: #835afd;
         padding: 0 12px;
