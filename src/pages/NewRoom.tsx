@@ -2,7 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FormEvent, useState } from 'react';
 
 import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
+import logoImg from '../assets/images/LogoImg.svg'
 
 import { Button } from '../components/Button/index'
 import { database } from '../services/firebase'

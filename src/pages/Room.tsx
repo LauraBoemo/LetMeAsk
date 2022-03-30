@@ -1,7 +1,7 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import logoImg from '../assets/images/logo.svg';
+import logoImg from '../assets/images/LogoImg.svg';
 import { Button } from '../components/Button/index';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
@@ -16,12 +16,16 @@ type RoomParams = {
 }
 
 export function Room() {
-    const { user } = useAuth();
     const params = useParams<RoomParams>();
+    const { user, signInWithGoogle } = useAuth();
     const [newQuestion, setNewQuestion] = useState('');
     const roomId = params.id;
 
     const { title, questions } = useRoom(roomId)
+
+    async function handleLoginInsideRoom() {
+        await signInWithGoogle()
+    }
 
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
@@ -83,7 +87,7 @@ export function Room() {
                                 <span>{user.name}</span>
                             </div>
                         ) : (
-                                <span>Para enviar uma pergunta, <button>faça seu login</button></span>
+                                <span>Para enviar uma pergunta, <button onClick={handleLoginInsideRoom}>faça seu login</button></span>
                         ) }
                         <Button type="submit">
                             Enviar pergunta
